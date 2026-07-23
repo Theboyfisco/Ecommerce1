@@ -39,7 +39,7 @@
 - **Styling**: Tailwind CSS v4 with an organic, warm neutral aesthetic (`#F2F0E9` canvas, `#5A5A40` sage green accents, `#D4A373` terracotta highlights)
 - **Icons**: Lucide React
 - **Animations & Interactivity**: Client-side React hooks for modal states, search filtering, and responsive drawers
-- **Data Layer**: Hybrid approach using Supabase client integration with fallback to a rich 150-product generator (`lib/dummyData.ts`)
+- **Data Layer**: Supabase-backed catalog with an explicit opt-in demo catalog fallback powered by `lib/dummyData.ts`
 
 ---
 
@@ -64,8 +64,10 @@
 │       ├── WhatsAppOrderModal.tsx# Nigerian delivery region selector & WhatsApp generator
 │       └── SizeGuideModal.tsx    # Sizing conversion chart modal
 ├── lib/
+│   ├── catalog.ts                # Supabase-to-catalog product mapper
 │   ├── currency.ts               # Naira (₦) formatting utility (`formatNaira`)
 │   ├── dummyData.ts              # 150-product generator & category metadata
+│   ├── site.ts                   # Site URL and demo catalog environment helpers
 │   └── supabase/                 # Supabase server & client initializers
 └── public/                       # Static public assets
 ```
@@ -75,8 +77,8 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ or 20+
-- npm or yarn
+- Node.js 22+
+- npm or Bun
 
 ### Installation
 
@@ -89,6 +91,8 @@
    Create a `.env.local` file at the root:
    ```env
    NEXT_PUBLIC_WHATSAPP_NUMBER=2348000000000
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+NEXT_PUBLIC_DEMO_CATALOG=false
    ```
 
 3. **Run Development Server**:
@@ -97,7 +101,14 @@
    ```
    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-4. **Build & Production**:
+4. **Demo catalog for local previews**:
+   If Supabase is not configured yet, you can opt in to generated preview products by setting:
+   ```env
+   NEXT_PUBLIC_DEMO_CATALOG=true
+   ```
+   Keep this disabled in production so placeholder inventory is not shown to shoppers.
+
+5. **Build & Production**:
    ```bash
    npm run build
    npm start
