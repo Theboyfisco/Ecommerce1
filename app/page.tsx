@@ -1,7 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { mapSupabaseProductToCatalogProduct } from '@/lib/catalog';
 import { generateDummyProducts, DummyProduct } from '@/lib/dummyData';
-import { isDemoCatalogEnabled } from '@/lib/site';
 import { StorefrontCatalog } from '@/components/store/StorefrontCatalog';
 
 export default async function HomePage() {
