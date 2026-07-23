@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css'; // Global styles
 import { ToastProvider } from '@/context/ToastContext';
+import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,7 +21,7 @@ const cormorant = Cormorant_Garamond({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aurelia-maison.com';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(getSiteUrl()),
   title: 'Aurelia Apparel & Maison',
   description: 'Luxury Organic Linen, Silk & Artisanal Leather Storefront',
 };
