@@ -17,7 +17,10 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aurelia-maison.com';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Aurelia Apparel & Maison',
   description: 'Luxury Organic Linen, Silk & Artisanal Leather Storefront',
 };
