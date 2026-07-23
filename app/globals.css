@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+  
+  --color-sage: #5A5A40;
+  --color-sand: #E6E2D3;
+  --color-terracotta: #D4A373;
+  --color-background: #F2F0E9;
+}
+
+@layer utilities {
+  .serif {
+    font-family: var(--font-serif);
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-sand);
+    border-radius: 10px;
+  }
+}
+
+@layer components {
+  .organic-card {
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 4px 24px rgba(90, 90, 64, 0.05);
+    border: 1px solid rgba(90, 90, 64, 0.08);
+  }
+  
+  .nav-item-active {
+    background-color: var(--color-sage);
+    color: #FFFFFF;
+  }
+  
+  .accent-sage {
+    color: var(--color-sage);
+  }
+  
+  .bg-sage {
+    background-color: var(--color-sage);
+  }
+  
+  .bg-sand {
+    background-color: var(--color-sand);
+  }
+  
+  .bg-terracotta {
+    background-color: var(--color-terracotta);
+  }
+}
