@@ -6,9 +6,12 @@ import { StorefrontCatalog } from '@/components/store/StorefrontCatalog';
 
 export default async function HomePage() {
   let products: DummyProduct[] = [];
+  const hasSupabaseConfig = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
 
   try {
-    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    if (hasSupabaseConfig) {
       const supabase = await createClient();
       const { data: prods } = await supabase
         .from('products')
